@@ -1,0 +1,48 @@
+<div class="ui grid" *ngIf="book">
+  <div class="four wide column">
+    <img [src]="book.thumbnails[0].url" class="ui large image">
+  </div>
+  <div class="twelve wide column">
+    <h1 class="ui header">{{book.title}}</h1>
+    <h3 class="ui header">{{book.subtitle}}</h3>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid">
+      <!-- COLUMN 1 -->
+      <div class="four wide column">
+        <h4 class="ui header">Autoren</h4>
+        <span *ngFor="let author of book.authors; last as l">
+          {{author}} <span *ngIf="!l">, </span>
+        </span>
+      </div>
+      <!-- COLUMN 2 -->
+      <div class="four wide column">
+        <h4 class="ui header">ISBN</h4>
+        {{book.isbn}}
+      </div>
+      <!-- COLUMN 3 -->
+      <div class="four wide column">
+        <h4 class="ui header">Erschienen</h4>
+        {{book.published}}
+      </div>
+      <!-- COLUMN 4 -->
+      <div class="four wide column">
+        <h4 class="ui header"></h4>
+        <i class="yellow star icon" *ngFor="let r of getRating(book.rating)"></i>
+      </div>
+    </div>
+    <button class="ui red button" (click)="showBookList()">Zurück zur Buchliste</button>
+  </div>
+  <!-- WIDE COLUMN -->
+  <div class="sixteen wide column">
+    <h3 class="ui header">Beschreibung</h3>
+    {{book.description}}
+  </div>
+  <!-- WIDE COLUMN -->
+  <div class="sixteen wide column">
+    <div class="ui small images">
+      <img *ngFor="let thumbnail of book.thumbnails" [src]="thumbnail.url">
+    </div>
+  </div>
+</div>

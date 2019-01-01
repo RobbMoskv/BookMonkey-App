@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Book, Thumbnail } from '../shared/book';
 
 @Component({
@@ -8,6 +8,8 @@ import { Book, Thumbnail } from '../shared/book';
 })
 export class BookListComponent implements OnInit {
   books: Book[];
+
+  @Output() showDetailsEvent = new EventEmitter<Book>();
   constructor() {}
   // S. 94
   ngOnInit() {
@@ -29,7 +31,7 @@ export class BookListComponent implements OnInit {
       new Book(
         '923842019',
         'Sprache leicht gelernt',
-        ['JMartina Meile', 'Kati Hering', 'Thomas Magular'],
+        ['Martina Meile', 'Kati Hering', 'Thomas Magular'],
         new Date(2014, 4, 2),
         'Lernen SIe auf einfach weise die Sprachen der Welt.',
         2,
@@ -41,5 +43,10 @@ export class BookListComponent implements OnInit {
         ]
       )
     ];
+  }
+
+  // Method
+  showDetails(book: Book) {
+    this.showDetailsEvent.emit(book);
   }
 }
