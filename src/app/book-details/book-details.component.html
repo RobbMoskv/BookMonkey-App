@@ -32,7 +32,7 @@
         <i class="yellow star icon" *ngFor="let r of getRating(book.rating)"></i>
       </div>
     </div>
-    <button class="ui red button" (click)="showBookList()">Zurück zur Buchliste</button>
+    <button class="ui red button" [routerLink]="['/booklist']">Zurück zur Buchliste</button>
   </div>
   <!-- WIDE COLUMN -->
   <div class="sixteen wide column">

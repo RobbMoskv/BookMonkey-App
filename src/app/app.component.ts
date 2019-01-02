@@ -3,18 +3,7 @@ import { Book } from './shared/book';
 
 @Component({
   selector: 'bm-root',
-  template: `
-    <bm-book-list
-      *ngIf="listOn"
-      (showDetailsEvent)="showDetails($event)"
-    ></bm-book-list>
-
-    <bm-book-details
-      *ngIf="detailsOn"
-      (showListEvent)="showList()"
-      [book]="book"
-    ></bm-book-details>
-  `,
+  templateUrl: './app.component.html',
   styles: []
 })
 export class AppComponent {
@@ -22,7 +11,6 @@ export class AppComponent {
   detailsOn = false;
 
   book: Book;
-  // Seite 110
 
   // Method
   showList() {
