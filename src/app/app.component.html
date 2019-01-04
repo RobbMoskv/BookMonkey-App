@@ -1,9 +1,5 @@
-<!-- app.component.html -->
-<h1>The Book List</h1>
+<div class="ui two item tabs menu">
+    <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
+    <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
+</div>
 <router-outlet></router-outlet>
-
-<!-- <bm-book-list *ngIf="listOn" (showDetailsEvent)="showDetails($event)">
-</bm-book-list>
-
-<bm-book-details *ngIf="detailsOn" (showListEvent)="showList()" [book]="book">
-</bm-book-details> -->

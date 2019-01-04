@@ -39,7 +39,13 @@ export class BookStoreService {
     ];
   }
 
+  // Method: Get all books
   getAll() {
     return this.books;
+  }
+
+  // Method: Get a single book
+  getSingle(isbn) {
+    return this.books.find(book => book.isbn === isbn);
   }
 }
