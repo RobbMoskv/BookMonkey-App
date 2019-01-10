@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 // Components
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 

@@ -1,0 +1,14 @@
+<div class="ui container two column grid">
+    <!-- Container -->
+    <div class="ui container column">
+        <h1>Home</h1>
+        <p>Willkommen im BookMonkey</p>
+        <a routerLink="../books" class="ui red button">
+            Buchliste ansehen
+            <i class="right arrow icon"></i>
+        </a>
+    </div>
+
+    <!-- Search -->
+    <bm-search class="column" (bookSelected)="bookSelected($event)"></bm-search>
+</div>

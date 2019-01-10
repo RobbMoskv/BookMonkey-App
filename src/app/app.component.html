@@ -1,5 +1,7 @@
-<div class="ui two item tabs menu">
-    <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
-    <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
+<div class="ui container">
+    <div class="ui two item tabs menu">
+        <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
+        <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
+    </div>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
