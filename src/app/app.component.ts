@@ -6,5 +6,3 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent { }
-
-// S. 157
