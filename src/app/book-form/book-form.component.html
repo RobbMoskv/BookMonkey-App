@@ -23,13 +23,17 @@
   <div class="field">
     <label for="published">Erscheinungsdatum</label>
     <input type="date" name="published" [(ngModel)]="book.published" useValueAsDate required>
-    <div class="ui negative message" *ngIf="errors.published">{{ errors.published}}</div>
+    <div class="ui negative message" *ngIf="errors.published">
+      {{ errors.published}}
+    </div>
   </div>
   <!-- AUTHOR -->
   <div class="field">
     <label for="authors">Autoren</label>
     <input name="authors" [(ngModel)]="book.authors[0]" required>
-    <div class="ui negative message" *ngIf="errors.authors">{{ errors.authors }}</div>
+    <div class="ui negative message" *ngIf="errors.authors">
+      {{ errors.authors }}
+    </div>
   </div>
   <!-- DESCRIPTION -->
   <div class="field">

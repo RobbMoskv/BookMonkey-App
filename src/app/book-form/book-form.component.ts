@@ -15,7 +15,7 @@ export class BookFormComponent implements OnInit {
   // Access variable of form reference
   @ViewChild('myForm') myForm: NgForm;
   // Initialize empty book object
-  book = BookFactory.empty();
+  book: Book = BookFactory.empty();
   // Import error message array
   errors: { [key: string]: string } = {};
 
