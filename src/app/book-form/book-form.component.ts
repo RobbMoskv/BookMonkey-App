@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Book } from '../shared/book';
 import { BookFactory } from '../shared/book-factory';
 import { BookStoreService } from '../shared/book-store.service';
 import { BookFormErrorMessages } from './book-form-error-messages';
+
 
 @Component({
   selector: 'bm-book-form',
@@ -12,20 +14,68 @@ import { BookFormErrorMessages } from './book-form-error-messages';
 })
 export class BookFormComponent implements OnInit {
 
-  // Access variable of form reference
-  @ViewChild('myForm') myForm: NgForm;
-  // Initialize empty book object
+  myForm: FormGroup;  // Initialte form model
+  authors: FormArray;
+  thumbnails: FormArray;
   book: Book = BookFactory.empty();
-  // Import error message array
-  errors: { [key: string]: string } = {};
+  errors: { [key: string]: string } = {}; // Import error message array
+  isUpdatingBook = false;
 
-  constructor(private bs: BookStoreService) { }
+  constructor(private bs: BookStoreService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
-    // Catch form changes by subscribing to observable
-    this.myForm.statusChanges.subscribe(() => this.updateErrorMessages());
+    // Get book based on selected isbn if exisits and initialize form
+    const isbn = this.route.snapshot.params['isbn'];
+    if (isbn) {
+      this.isUpdatingBook = true;
+      this.bs.getSingle(isbn).subscribe(book => {
+        this.book = book;
+        this.initBook();
+      });
+    }
+
+    this.initBook();
 
   }
+
+  // Method: Initialze form
+  initBook() {
+    this.buildAuthorsArray();
+    this.buildThumbnailsArray();
+
+    this.myForm = this.fb.group({
+      title: [this.book.title, Validators.required],
+      subtitle: [this.book.subtitle],
+      isbn: [this.book.isbn, [Validators.required, Validators.minLength(10), Validators.maxLength(13)]],
+      description: [this.book.description],
+      authors: [this.authors],
+      thumbnails: [this.thumbnails],
+      published: [this.book.published],
+    });
+
+    // Catch form changes by subscribing to observable
+    this.myForm.statusChanges.subscribe(() => this.updateErrorMessages());
+  }
+
+  // Method: Array builder for Authors
+  buildAuthorsArray() {
+    this.authors = this.fb.array(this.book.authors, Validators.required);
+  }
+
+  // Method: Array builder for thumbnails
+  buildThumbnailsArray() {
+    this.thumbnails = this.fb.array(
+      this.book.thumbnails.map(
+        t => this.fb.group({
+          url: this.fb.control(t.url),
+          title: this.fb.control(t.title),
+        })
+      )
+    );
+  }
+
+  // Method:
+  // S.239
 
   // Method: Access validation fields by iterating through formControl properties of error message list
   updateErrorMessages() {
