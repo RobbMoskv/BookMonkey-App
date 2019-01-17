@@ -75,8 +75,12 @@ export class BookFormComponent implements OnInit {
   }
 
   // Method:
-  // S.239
-
+  addAuthorControl() {
+    this.authors.push(this.fb.control(null));
+  }
+  addThumbnailControl() {
+    this.thumbnails.push(this.fb.group({ url: null, title: null }));
+  }
   // Method: Access validation fields by iterating through formControl properties of error message list
   updateErrorMessages() {
     this.errors = {};
@@ -95,17 +99,29 @@ export class BookFormComponent implements OnInit {
   // Methode: Persist data of form by sumbmitting to book service.
   submitForm() {
 
-    // transfer string data into array format
-    this.book.authors = this.myForm.value.authors.split(',');
-    this.book.thumbnails = [this.myForm.value.thumbnail];
+    // filter empty values
+    this.myForm.value.authors = this.myForm.value.authors.filter(author => author);
+    this.myForm.value.thumbnails = this.myForm.value.thumbnails.filter(thumbnails => thumbnails.url);
 
     // transfer form object via book factory.
-    const book = BookFactory.fromObject(this.book);
+    const book: Book = BookFactory.fromObject(this.myForm.value);
 
-    // Persist book via service
-    this.bs.create(book).subscribe(res => {
-      this.book = BookFactory.empty();
-      this.myForm.reset(BookFactory.empty());
-    });
+    if (this.isUpdatingBook) {
+      // Update book via service
+      this.bs.update(book).subscribe(res => {
+        this.router.navigate(['../../books', book.isbn], { relativeTo: this.route });
+      });
+    } else {
+      // Create new book via service
+      this.bs.create(book).subscribe(res => {
+        this.book = BookFactory.empty();
+        this.myForm.reset(BookFactory.empty());
+      });
+    }
+
+
+
+
+
   }
 }
