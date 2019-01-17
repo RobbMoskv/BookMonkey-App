@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -13,27 +13,31 @@ import { BookFormErrorMessages } from './book-form-error-messages';
   templateUrl: './book-form.component.html',
 })
 export class BookFormComponent implements OnInit {
-
-  myForm: FormGroup;  // Initialte form model
-  authors: FormArray;
-  thumbnails: FormArray;
   book: Book = BookFactory.empty();
   errors: { [key: string]: string } = {}; // Import error message array
-  isUpdatingBook = false;
 
-  constructor(private bs: BookStoreService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
+  isUpdatingBook = false;
+  myForm: FormGroup;  // Initialze form model
+  authors: FormArray;
+  thumbnails: FormArray;
+
+  constructor(
+    private bs: BookStoreService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
     // Get book based on selected isbn if exisits and initialize form
     const isbn = this.route.snapshot.params['isbn'];
     if (isbn) {
       this.isUpdatingBook = true;
-      this.bs.getSingle(isbn).subscribe(book => {
-        this.book = book;
-        this.initBook();
-      });
+      this.bs.getSingle(isbn)
+        .subscribe(book => {
+          this.book = book;
+          this.initBook();
+        });
     }
-
     this.initBook();
   }
 
@@ -44,12 +48,12 @@ export class BookFormComponent implements OnInit {
 
     this.myForm = this.fb.group({
       title: [this.book.title, Validators.required],
-      subtitle: [this.book.subtitle],
+      subtitle: this.book.subtitle,
       isbn: [this.book.isbn, [Validators.required, Validators.minLength(10), Validators.maxLength(13)]],
-      description: [this.book.description],
-      authors: [this.authors],
-      thumbnails: [this.thumbnails],
-      published: [this.book.published],
+      description: this.book.description,
+      authors: this.authors,
+      thumbnails: this.thumbnails,
+      published: this.book.published,
     });
 
     // Catch form changes by subscribing to observable
@@ -73,10 +77,12 @@ export class BookFormComponent implements OnInit {
     );
   }
 
-  // Method:
+  // Method: Adds an additional Author control to the view
   addAuthorControl() {
     this.authors.push(this.fb.control(null));
   }
+
+  // Method: Adds an additional Thumbnail control to the view
   addThumbnailControl() {
     this.thumbnails.push(this.fb.group({ url: null, title: null }));
   }
@@ -100,7 +106,7 @@ export class BookFormComponent implements OnInit {
 
     // filter empty values
     this.myForm.value.authors = this.myForm.value.authors.filter(author => author);
-    this.myForm.value.thumbnails = this.myForm.value.thumbnails.filter(thumbnails => thumbnails.url);
+    this.myForm.value.thumbnails = this.myForm.value.thumbnails.filter(thumbnail => thumbnail.url);
 
     // transfer form object via book factory.
     const book: Book = BookFactory.fromObject(this.myForm.value);
@@ -117,10 +123,5 @@ export class BookFormComponent implements OnInit {
         this.myForm.reset(BookFactory.empty());
       });
     }
-
-
-
-
-
   }
 }
