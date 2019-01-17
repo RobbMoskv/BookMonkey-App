@@ -35,7 +35,6 @@ export class BookFormComponent implements OnInit {
     }
 
     this.initBook();
-
   }
 
   // Method: Initialze form
@@ -85,7 +84,7 @@ export class BookFormComponent implements OnInit {
   updateErrorMessages() {
     this.errors = {};
     for (const message of BookFormErrorMessages) {
-      const control = this.myForm.form.get(message.forControl);
+      const control = this.myForm.get(message.forControl);
       if (control &&
         control.dirty &&
         control.invalid &&

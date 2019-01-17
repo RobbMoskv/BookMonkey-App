@@ -1,20 +1,20 @@
 <h1>Buchformular</h1>
-<form class="ui large form" #myForm="ngForm" (ngSubmit)="submitForm()">
+<form class="ui large form" [formGroup]="myForm" (ngSubmit)="submitForm()">
   <!-- TITLE -->
   <div class="field">
     <label for="title">Buchtitel</label>
-    <input name="title" [(ngModel)]="book.title" required>
+    <input [formControlName]="title" required>
     <div class="ui negative message" *ngIf="errors.title">{{errors.title}}</div>
   </div>
   <!-- SUBTITLE -->
   <div class="field">
     <label for="subtitle">Untertitel</label>
-    <input name="subtitle" [(ngModel)]="book.subtitle">
+    <input [formControlName]="subtitle">
   </div>
   <!-- ISBN -->
-  <div class="field">
+  <div class="field" [class.disabled]="isUpdatingBook">
     <label for="isbn">ISBN-Nummer</label>
-    <input name="isbn" [(ngModel)]="book.isbn" minlength="10" maxlength="13" required>
+    <input [formControlName]="isbn" minlength="10" maxlength="13" required>
     <div class="ui negative message" *ngIf="errors.isbn">
       {{ errors.isbn }}
     </div>
@@ -22,7 +22,7 @@
   <!-- PUBLISHED -->
   <div class="field">
     <label for="published">Erscheinungsdatum</label>
-    <input type="date" name="published" [(ngModel)]="book.published" useValueAsDate required>
+    <input type="date" [formControlName]="published" useValueAsDate required>
     <div class="ui negative message" *ngIf="errors.published">
       {{ errors.published}}
     </div>
@@ -30,7 +30,14 @@
   <!-- AUTHOR -->
   <div class="field">
     <label for="authors">Autoren</label>
-    <input name="authors" [(ngModel)]="book.authors[0]" required>
+    <div class="fields" [formControlArray]="authors">
+      <div class="fifteen wide fields" *ngFor="let control of authors.control; index as i;">
+        <input [formControlName]="i" placeholder="Author {{i+1}}" required>
+      </div>
+      <div class="one wide field">
+        <button class="ui large button" type="button" (click)="addAuthorControl()"> + </button>
+      </div>
+    </div>
     <div class="ui negative message" *ngIf="errors.authors">
       {{ errors.authors }}
     </div>
@@ -38,11 +45,27 @@
   <!-- DESCRIPTION -->
   <div class="field">
     <label for="description">Beschreibung</label>
-    <textarea name="description" [(ngModel)]="book.description" rows="3"></textarea>
+    <textarea [formControlName]="description" rows="3"></textarea>
   </div>
   <!-- THUMBNAIL -->
   <div class="field">
     <label for="thumbnail">Bild</label>
+    <div [formArrayName]="thumbnails">
+      <div class="fields" *ngFor="let control of thumbnails.controls; index as i; last as l;" [formGroupName]="i">
+        <div class="nine wide fields">
+          <input [formControlName]="url" placeholder="http://bild{{i+1}}_url">
+        </div>
+        <div class="six wide fields">
+          <input [formControlName]="title" placeholder="Bild {{i+1}}">
+        </div>
+        <div class="one wide fields">
+          <button class="ui large button" type="button" (click)="addThumbnailControl()"> + </button>
+        </div>
+      </div>
+    </div>
+
+
+
     <div class="two fields" ngModelGroup="thumbnail">
       <!-- URL -->
       <div class="field">
