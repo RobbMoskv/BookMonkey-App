@@ -86,6 +86,7 @@ export class BookFormComponent implements OnInit {
   addThumbnailControl() {
     this.thumbnails.push(this.fb.group({ url: null, title: null }));
   }
+
   // Method: Access validation fields by iterating through formControl properties of error message list
   updateErrorMessages() {
     this.errors = {};

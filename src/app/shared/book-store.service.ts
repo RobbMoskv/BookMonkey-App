@@ -74,5 +74,15 @@ export class BookStoreService {
   private errorHandler(error: Error | any): Observable<any> {
     return Observable.throw(error);
   }
+
+  // Method: Check if provided ISBN already exists
+  check(isbn: string): Observable<Boolean> {
+    return this.http
+      .get(`${this.api}/book/${isbn}/check`)
+      .pipe(
+        map(res => res.json()),
+        catchError(this.errorHandler),
+      );
+  }
 }
 
