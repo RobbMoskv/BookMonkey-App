@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
@@ -13,6 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { BookFormComponent } from './book-form/book-form.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeCH from '@angular/common/locales/de-CH';
+
+// the second parameter 'ch' is optional
+registerLocaleData(localeCH, 'ch');
+
 
 @NgModule({
   declarations: [
@@ -31,7 +38,7 @@ import { BookFormComponent } from './book-form/book-form.component';
     ReactiveFormsModule,
     DateValueAccessorModule
   ],
-  providers: [BookStoreService],
+  providers: [BookStoreService, { provide: LOCALE_ID, useValue: 'ch' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
