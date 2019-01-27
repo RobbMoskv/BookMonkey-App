@@ -9,7 +9,7 @@ export class BookValidators {
     // Make sure isbn was entered in a correct format
     static isbnFormat(control: FormControl): { [error: string]: any } {
 
-        // Handle empty object straigh away
+        // Handle empty object straight away
         if (!control.value) { return null; }
 
         // remove minus (-) values
