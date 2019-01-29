@@ -3,8 +3,8 @@
     <img [src]="book.thumbnails[0].url" class="ui large image">
   </div>
   <div class="twelve wide column">
-    <h1 class="ui header">{{book.title}}</h1>
-    <h3 class="ui header">{{book.subtitle}}</h3>
+    <h1 class="ui header">{{book?.title}}</h1>
+    <h3 class="ui header">{{book?.subtitle}}</h3>
 
     <div class="ui divider"></div>
 
@@ -19,7 +19,7 @@
       <!-- COLUMN 2 -->
       <div class="four wide column">
         <h4 class="ui header">ISBN</h4>
-        {{book.isbn}}
+        {{book?.isbn | isbn: true}}
       </div>
       <!-- COLUMN 3 -->
       <div class="four wide column">
@@ -36,7 +36,7 @@
   <!-- WIDE COLUMN -->
   <div class="sixteen wide column">
     <h3 class="ui header">Beschreibung</h3>
-    {{book.description}}
+    {{book?.description}}
   </div>
   <!-- WIDE COLUMN -->
   <div class="sixteen wide column">
