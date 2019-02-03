@@ -18,6 +18,7 @@ import { registerLocaleData } from '@angular/common';
 import localeCH from '@angular/common/locales/de-CH';
 import { IsbnPipe } from './shared/isbn.pipe';
 import { ZoomDirective } from './shared/zoom.directive';
+import { DelayDirective } from './shared/delay.directive';
 
 // the second parameter 'ch' is optional
 registerLocaleData(localeCH, 'ch');
@@ -32,7 +33,8 @@ registerLocaleData(localeCH, 'ch');
     SearchComponent,
     BookFormComponent,
     IsbnPipe,
-    ZoomDirective
+    ZoomDirective,
+    DelayDirective
   ],
   imports: [
     HttpModule,
