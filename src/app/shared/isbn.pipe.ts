@@ -24,5 +24,4 @@ export class IsbnPipe implements PipeTransform {
       return `${prefix}${value.substr(0, 3)}-${value.substr(3)}`;
     }
   }
-
 }

@@ -7,7 +7,7 @@ export class BookFactory {
         return new Book('', '', [''], new Date(), '', 0, [{ url: '', title: '' }], '');
     }
 
-    // Method: Creates Book object based on plain JS object
+    // Method: Converts a plain JS object into a Book object
     static fromObject(rawBook: any): Book {
         return new Book(
             rawBook.isbn,
