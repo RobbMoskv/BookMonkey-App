@@ -22,7 +22,6 @@ import { ZoomDirective } from './shared/zoom.directive';
 // the second parameter 'ch' is optional
 registerLocaleData(localeCH, 'ch');
 
-
 @NgModule({
   declarations: [
     AppComponent,
