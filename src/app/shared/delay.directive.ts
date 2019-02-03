@@ -1,10 +1,22 @@
-import { Directive } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[bmDelay]'
 })
-export class DelayDirective {
+export class DelayDirective implements OnInit {
 
-  constructor() { }
+  // Insertion time as argument
+  @Input() bmDelay;
 
+  constructor(private tempRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) { }
+
+  ngOnInit() {
+    setTimeout(() => {
+      // Return template by callback function
+      this.viewContainerRef.createEmbeddedView(this.tempRef);
+    },
+      this.bmDelay
+    );
+  }
 }
+

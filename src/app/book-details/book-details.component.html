@@ -28,8 +28,10 @@
       </div>
       <!-- COLUMN 4 -->
       <div class="four wide column">
-        <h4 class="ui header"></h4>
-        <i class="yellow star icon" *ngFor="let r of getRating(book.rating)"></i>
+        <h4 class="ui header">Bewertung</h4>
+        <span *ngFor="let r of getRating(book?.rating); index as i;">
+          <i class="yellow star icon" *bmDelay="500 + i * 200"></i>
+        </span>
       </div>
     </div>
   </div>
