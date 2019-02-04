@@ -2,7 +2,7 @@ import { FormControl, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { BookStoreService } from '../shared/book-store.service';
+import { BookStoreService } from '../../shared/book-store.service';
 
 export class BookValidators {
 
