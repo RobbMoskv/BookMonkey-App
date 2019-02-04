@@ -23,7 +23,9 @@ import { DelayDirective } from './shared/delay.directive';
 // the second parameter 'ch' is optional
 registerLocaleData(localeCH, 'ch');
 
+// Attach meta data to class
 @NgModule({
+  // declared components to be valid within this module
   declarations: [
     AppComponent,
     BookListComponent,
@@ -36,6 +38,7 @@ registerLocaleData(localeCH, 'ch');
     ZoomDirective,
     DelayDirective
   ],
+  // import neccessary modules to be valid within this module
   imports: [
     HttpModule,
     BrowserModule,
@@ -43,7 +46,9 @@ registerLocaleData(localeCH, 'ch');
     ReactiveFormsModule,
     DateValueAccessorModule
   ],
+  // Injectable modules available across the whole app
   providers: [BookStoreService, { provide: LOCALE_ID, useValue: 'ch' }],
+  // Define which component to load on bootstrapping
   bootstrap: [AppComponent]
 })
 export class AppModule { }
