@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookFormComponent } from './book-form/book-form.component';
 
 const routes: Routes = [
-  { path: 'admin', component: BookFormComponent },
-  { path: 'admin/:isbn', component: BookFormComponent },
+  { path: '', component: BookFormComponent },
+  { path: ':isbn', component: BookFormComponent },
 ];
 
 @NgModule({

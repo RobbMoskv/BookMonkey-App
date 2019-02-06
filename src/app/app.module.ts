@@ -10,8 +10,6 @@ import { SearchComponent } from './search/search.component';
 import { BookStoreService } from './shared/book-store.service';
 import { registerLocaleData } from '@angular/common';
 import localeCH from '@angular/common/locales/de-CH';
-import { AdminModule } from './admin/admin.module';
-import { BookModule } from './book/book.module';
 
 // the second parameter 'ch' is optional
 registerLocaleData(localeCH, 'ch');
@@ -29,8 +27,6 @@ registerLocaleData(localeCH, 'ch');
     HttpModule,
     BrowserModule,
     AppRoutingModule,
-    BookModule,
-    AdminModule
   ],
   // Injectable modules available across the whole app
   providers: [BookStoreService, { provide: LOCALE_ID, useValue: 'ch' }],
