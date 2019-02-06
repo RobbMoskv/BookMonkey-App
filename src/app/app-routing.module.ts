@@ -8,8 +8,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     // Lazy loading routes
-    { path: 'books', loadChildren: 'app/book/book.module#BookModule' },
-    { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' }
+    { path: 'books', loadChildren: './book/book.module#BookModule' },
+    { path: 'admin', loadChildren: './admin/admin.module#AdminModule' }
 ];
 
 @NgModule({
