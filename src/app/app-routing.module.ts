@@ -29,3 +29,4 @@ const routes: Routes = [
     providers: [CanNavigateToAdminGuard]
 })
 export class AppRoutingModule { }
+// S. 337

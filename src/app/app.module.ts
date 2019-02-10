@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { BookStoreService } from './shared/book-store.service';
 import { registerLocaleData } from '@angular/common';
 import localeCH from '@angular/common/locales/de-CH';
+import { BookResolver } from './shared/book-resolver.service';
 
 // the second parameter 'ch' is optional
 registerLocaleData(localeCH, 'ch');
@@ -29,7 +30,7 @@ registerLocaleData(localeCH, 'ch');
     AppRoutingModule,
   ],
   // Injectable modules available across the whole app
-  providers: [BookStoreService, { provide: LOCALE_ID, useValue: 'ch' }],
+  providers: [BookStoreService, BookResolver, { provide: LOCALE_ID, useValue: 'ch' }],
   // Define which component to load on bootstrapping
   bootstrap: [AppComponent]
 })

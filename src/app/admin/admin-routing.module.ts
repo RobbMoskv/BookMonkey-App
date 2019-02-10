@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookFormComponent } from './book-form/book-form.component';
+import { BookResolver } from '../shared/book-resolver.service';
 
 const routes: Routes = [
   { path: '', component: BookFormComponent },
-  { path: ':isbn', component: BookFormComponent },
+  {
+    path: ':isbn',
+    component: BookFormComponent,
+    resolve: {
+      book: BookResolver // Preloads data when route gets called
+    }
+  },
 ];
 
 @NgModule({

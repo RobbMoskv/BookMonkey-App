@@ -29,15 +29,12 @@ export class BookFormComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit() {
-    // Get book based on selected isbn if exisits and initialize form
-    const isbn = this.route.snapshot.params['isbn'];
-    if (isbn) {
+    // Get book object from snapshot
+    const data = this.route.snapshot.data;
+    // Get pre loaded object in case it exists (modify book)
+    if (data['book']) {
       this.isUpdatingBook = true;
-      this.bs.getSingle(isbn)
-        .subscribe(book => {
-          this.book = book;
-          this.initBook();
-        });
+      this.book = data['book'];
     }
     this.initBook();
   }
