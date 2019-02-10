@@ -1,20 +1,16 @@
 <div class="ui container">
-    <!-- <div class="ui three item tabs menu">
-        <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
-        <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
-        <a class="item" [routerLink]="['admin']" routerLinkActive="active">Administration</a>
-    </div> -->
-
     <div class="ui fixed inverted four item tabs menu menu">
         <div class="ui container">
-            <a class="item">
+            <div class="item">
                 <img class="logo" src="../assets/angular.png">
-                The Book Monkey App
-            </a>
+            </div>
             <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
             <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
             <a class="item" [routerLink]="['admin']" routerLinkActive="active">Administration</a>
         </div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="ui main container">
+        <router-outlet></router-outlet>
+    </div>
+
 </div>
