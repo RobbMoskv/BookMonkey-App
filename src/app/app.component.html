@@ -1,16 +1,18 @@
-<div class="ui container">
-    <div class="ui fixed inverted four item tabs menu menu">
+<div class="ui">
+    <div class="ui attached stackable menu">
         <div class="ui container">
-            <div class="item">
-                <img class="logo" src="../assets/angular.png">
-            </div>
             <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
             <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
             <a class="item" [routerLink]="['admin']" routerLinkActive="active">Administration</a>
+            <div class="right item">
+                <div class="ui input">
+                    <!-- Search -->
+                    <bm-search class="column" (bookSelected)="bookSelected($event)"></bm-search>
+                </div>
+            </div>
         </div>
     </div>
     <div class="ui main container">
         <router-outlet></router-outlet>
     </div>
-
 </div>
