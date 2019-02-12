@@ -1,10 +1,14 @@
-<div class="ui container four column grid">
-    <!-- Container -->
-    <div class="ui text container">
-        <h1 class="ui header">
-            The Book Monkey App
-        </h1>
-        <h2>Willkommen im BookMonkey</h2>
-        <a routerLink="../books" class="ui huge primary button">Buchliste ansehen <i class="right arrow icon"></i></a>
+<div class="">
+    <div class="ui two column very relaxed grid">
+        <div class="column">
+            <h1 class="ui header">
+                The Book Monkey App
+            </h1>
+            <a routerLink="../books" class="ui huge primary button">Buchliste ansehen <i
+                    class="right arrow icon"></i></a>
+        </div>
+        <div class="column">
+            <bm-search class="column" (bookSelected)="bookSelected($event)"></bm-search>
+        </div>
     </div>
 </div>
