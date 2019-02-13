@@ -9,13 +9,13 @@ import { Book } from '../shared/book';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  // constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  bookSelected(book: Book) {
-    this.router.navigate(['../books', book.isbn], { relativeTo: this.route });
-  }
+  // bookSelected(book: Book) {
+  //   this.router.navigate(['../books', book.isbn], { relativeTo: this.route });
+  // }
 
 }

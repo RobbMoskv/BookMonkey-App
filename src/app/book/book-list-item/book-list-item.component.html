@@ -1,13 +1,24 @@
-<!-- IMAGE -->
-<img class="ui tiny image" *ngIf="book.thumbnails" [src]="book.thumbnails[0].url" bmZoom />
-<!-- DESCRIPTION -->
-<div class="content">
-  <div class="header">{{ book?.title }}</div>
-  <div class="description">{{ book?.description }}</div>
-  <div class="metadata">
-    <span *ngFor="let author of book.authors; last as l">
-      {{ author }} <span *ngIf="!l">, </span>
-    </span>
+<div class="ui grid">
+  <div class="row">
+    <div class="three wide column">
+      <!-- IMAGE -->
+      <img class="ui tiny image" *ngIf="book.thumbnails" [src]="book.thumbnails[0].url" bmZoom />
+    </div>
+    <div class="thirteen wide column">
+      <!-- DESCRIPTION -->
+      <div class="content">
+        <div class="header">{{ book?.title }}</div>
+        <div class="description">{{ book?.description }}</div>
+        <p></p>
+        <div class="metadata">
+          <span *ngFor="let author of book.authors; last as l">
+            {{ author }} <span *ngIf="!l">, </span>
+          </span>
+        </div>
+        <div class="extra">ISBN {{ book?.isbn }}</div>
+      </div>
+
+    </div>
   </div>
-  <div class="extra">ISBN {{ book?.isbn }}</div>
+
 </div>

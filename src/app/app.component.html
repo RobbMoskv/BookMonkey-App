@@ -1,6 +1,7 @@
-<div class="ui">
+<div class="ui" id="page-container">
+    <!-- MENU -->
     <div class="ui attached stackable menu">
-        <div class="ui container">
+        <div class="ui container five item menu">
             <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
             <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
             <a class="item" [routerLink]="['admin']" routerLinkActive="active">Administration</a>
@@ -12,7 +13,15 @@
             </div>
         </div>
     </div>
-    <div class="ui main container">
+    <!-- MAIN -->
+    <div class="ui main container" id="main-content">
         <router-outlet></router-outlet>
+        <!-- FOOTER -->
+        <footer id="footer" class="">
+            <div class="ui container">
+                <p>Robb Moskv &copy; 2019</p>
+            </div>
+        </footer>
     </div>
+
 </div>
