@@ -1,0 +1,14 @@
+<div class="ui attached stackable menu">
+  <div class="ui container six item menu">
+    <div class="item"></div>
+    <a class="item" [routerLink]="['home']" routerLinkActive="active">Home</a>
+    <a class="item" [routerLink]="['books']" routerLinkActive="active">Books</a>
+    <a class="item" [routerLink]="['admin']" routerLinkActive="active">Administration</a>
+    <div class="right item">
+      <div class="ui input">
+        <!-- Search -->
+        <bm-search class="column" (bookSelected)="bookSelected($event)"></bm-search>
+      </div>
+    </div>
+  </div>
+</div>

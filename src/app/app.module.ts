@@ -11,6 +11,7 @@ import { BookStoreService } from './shared/book-store.service';
 import { registerLocaleData } from '@angular/common';
 import localeCH from '@angular/common/locales/de-CH';
 import { BookResolver } from './shared/book-resolver.service';
+import { NavComponent } from './nav/nav.component';
 
 // the second parameter 'ch' is optional
 registerLocaleData(localeCH, 'ch');
@@ -22,6 +23,7 @@ registerLocaleData(localeCH, 'ch');
     AppComponent,
     HomeComponent,
     SearchComponent,
+    NavComponent,
   ],
   // import neccessary modules to be valid within this module
   imports: [
