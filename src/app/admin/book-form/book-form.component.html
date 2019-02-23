@@ -1,19 +1,20 @@
-<h1>Buchformular</h1>
+<h1 class="ui dividing header" i18n="@@BookFormComponent:book form">Buchformular</h1>
+<br>
 <form class="ui large form" [formGroup]="myForm" (ngSubmit)="submitForm()">
   <!-- TITLE -->
   <div class="field">
-    <label for="title">Buchtitel</label>
+    <label for="title" i18n="@@BookFormComponent:book title">Buchtitel</label>
     <input formControlName="title" required>
     <div class="ui negative message" *ngIf="errors.title">{{errors.title}}</div>
   </div>
   <!-- SUBTITLE -->
   <div class="field">
-    <label for="subtitle">Untertitel</label>
+    <label for="subtitle" i18n="@@BookFormComponent:book subtitle">Untertitel</label>
     <input formControlName="subtitle">
   </div>
   <!-- ISBN -->
   <div class="field" [class.disabled]="isUpdatingBook">
-    <label for="isbn">ISBN-Nummer</label>
+    <label for="isbn" i18n="@@BookFormComponent:book isbn">ISBN-Nummer</label>
     <input formControlName="isbn" minlength="10" maxlength="13" required>
     <div class="ui negative message" *ngIf="errors.isbn">
       {{ errors.isbn }}
@@ -21,7 +22,7 @@
   </div>
   <!-- PUBLISHED -->
   <div class="field">
-    <label for="published">Erscheinungsdatum</label>
+    <label for="published" i18n="@@BookFormComponent:book published date">Erscheinungsdatum</label>
     <input type="date" formControlName="published" useValueAsDate required>
     <div class="ui negative message" *ngIf="errors.published">
       {{ errors.published}}
@@ -29,10 +30,10 @@
   </div>
   <!-- AUTHOR -->
   <div class="field">
-    <label for="authors">Autoren</label>
+    <label for="authors" i18n="@@BookFormComponent:book authors">Autoren</label>
     <div class="fields" formArrayName="authors">
       <div class="fifteen wide field" *ngFor="let control of authors.controls; index as i">
-        <input [formControlName]="i" placeholder="Autor {{i+1}}">
+        <input [formControlName]="i" placeholder="Autor {{i+1}}" i18n="@@BookFormComponent:book author placeholder">
       </div>
       <div class="one wide field">
         <button class="ui large button" type="button" (click)="addAuthorControl()"> + </button>
@@ -44,19 +45,21 @@
   </div>
   <!-- DESCRIPTION -->
   <div class="field">
-    <label for="description">Beschreibung</label>
+    <label for="description" i18n="@@BookFormComponent:book description">Beschreibung</label>
     <textarea formControlName="description" rows="3"></textarea>
   </div>
   <!-- THUMBNAIL -->
   <div class="field">
-    <label for="thumbnail">Bilder</label>
+    <label for="thumbnail" i18n="@@BookFormComponent:book thumbnails">Bilder</label>
     <div formArrayName="thumbnails">
       <div class="fields" *ngFor="let control of thumbnails.controls; index as i; last as l;" [formGroupName]="i">
         <div class="nine wide field">
-          <input formControlName="url" placeholder="http://bild{{i+1}}_url">
+          <input formControlName="url" placeholder="http://bild{{i+1}}_url"
+            i18n="@@BookFormComponent:book url placeholder">
         </div>
         <div class="six wide field">
-          <input formControlName="title" placeholder="Bild {{i+1}}">
+          <input formControlName="title" placeholder="Bild {{i+1}}"
+            i18n="@@BookFormComponent:book thumbnail placeholder">
         </div>
         <div class="one wide field">
           <button class="ui large button" type="button" (click)="addThumbnailControl()"> + </button>
@@ -65,5 +68,5 @@
     </div>
   </div>
   <!-- BUTTON -->
-  <button class="ui button" type="submit" [disabled]="myForm.invalid">Speichern</button>
+  <button class="ui button" type="submit" [disabled]="myForm.invalid" i18n="@@BookFormComponent:save">Speichern</button>
 </form>

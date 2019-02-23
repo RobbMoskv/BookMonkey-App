@@ -1,6 +1,3 @@
-body {
-  background-color: #FFFFFF;
-}
 
 .ui.menu .item img.logo {
   margin-right: 1.5em;
@@ -14,10 +11,13 @@ body {
   margin-top: 2em;
 }
 
-#page-container {
-  position: relative;
-  min-height: 100vh;
+/* Show as to be translated fields */
+[i18n],
+[i18n-placeholder],
+[i18n-title] {
+border: 1px solid green !important;
 }
+
 
 #main-content{
   padding-bottom: 7em;

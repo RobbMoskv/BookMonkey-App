@@ -1,3 +1,5 @@
+<h1 class="ui dividing header" i18n="@@BookListComponent:list of books">Bücher Liste</h1>
+<br>
 <div class="ui middle aligned selection divided list" *ngIf="books$ | async as books; else loading">
   <a class="bm-book-list-item item" *ngFor="let b of books" [book]="b" [routerLink]="b.isbn"></a>
   <p *ngIf="!books.length">Es wurden noch keine Bücher eingetragen.</p>

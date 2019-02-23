@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE messagebundle [
+<!ELEMENT messagebundle (msg)*>
+<!ATTLIST messagebundle class CDATA #IMPLIED>
+
+<!ELEMENT msg (#PCDATA|ph|source)*>
+<!ATTLIST msg id CDATA #IMPLIED>
+<!ATTLIST msg seq CDATA #IMPLIED>
+<!ATTLIST msg name CDATA #IMPLIED>
+<!ATTLIST msg desc CDATA #IMPLIED>
+<!ATTLIST msg meaning CDATA #IMPLIED>
+<!ATTLIST msg obsolete (obsolete) #IMPLIED>
+<!ATTLIST msg xml:space (default|preserve) "default">
+<!ATTLIST msg is_hidden CDATA #IMPLIED>
+
+<!ELEMENT source (#PCDATA)>
+
+<!ELEMENT ph (#PCDATA|ex)*>
+<!ATTLIST ph name CDATA #REQUIRED>
+
+<!ELEMENT ex (#PCDATA)>
+]>
+<messagebundle>
+  <msg id="HomeComponent:header"><source>app/home/home.component.html:3,5</source>
+            The Book Monkey App
+        </msg>
+  <msg id="HomeComponent:tagline" desc="a proud sentence about the project"><source>app/home/home.component.html:6,8</source>
+            Ihre Plattform für aktuelle und interessante Wissens-Bücher!
+        </msg>
+  <msg id="HomeComponent:book list link" desc="Text of the link to the books screen"><source>app/home/home.component.html:10,12</source>
+                Buchliste ansehen
+            </msg>
+  <msg id="BookFormComponent:book form"><source>app/admin/book-form/book-form.component.html:1</source>Buchformular</msg>
+  <msg id="BookFormComponent:book title"><source>app/admin/book-form/book-form.component.html:6</source>Buchtitel</msg>
+  <msg id="BookFormComponent:book subtitle"><source>app/admin/book-form/book-form.component.html:12</source>Untertitel</msg>
+  <msg id="BookFormComponent:book isbn"><source>app/admin/book-form/book-form.component.html:17</source>ISBN-Nummer</msg>
+  <msg id="BookFormComponent:book published date"><source>app/admin/book-form/book-form.component.html:25</source>Erscheinungsdatum</msg>
+  <msg id="BookFormComponent:book authors"><source>app/admin/book-form/book-form.component.html:33</source>Autoren</msg>
+  <msg id="BookFormComponent:book description"><source>app/admin/book-form/book-form.component.html:48</source>Beschreibung</msg>
+  <msg id="BookFormComponent:book thumbnails"><source>app/admin/book-form/book-form.component.html:53</source>Bilder</msg>
+  <msg id="BookFormComponent:save"><source>app/admin/book-form/book-form.component.html:71</source>Speichern</msg>
+  <msg id="BookListComponent:list of books"><source>app/book/book-list/book-list.component.html:1</source>Bücher Liste</msg>
+</messagebundle>

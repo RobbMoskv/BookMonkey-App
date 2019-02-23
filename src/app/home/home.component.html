@@ -1,11 +1,16 @@
-<div class="ui two column very relaxed grid" id="home-image">
+<div class="ui two column grid" id="home-image">
     <div class="column">
-        <h1 class="ui header">
+        <h1 class="ui dividing header" i18n="@@HomeComponent:header">
             The Book Monkey App
         </h1>
-        <a routerLink="../books" class="ui huge primary button">Buchliste ansehen <i class="right arrow icon"></i></a>
-    </div>
-    <div class="column">
-        <!-- <bm-search class="column" (bookSelected)="bookSelected($event)"></bm-search> -->
+        <p i18n="a proud sentence about the project@@HomeComponent:tagline">
+            Ihre Plattform für aktuelle und interessante Wissens-Bücher!
+        </p>
+        <a routerLink="../books" class="ui huge primary button">
+            <ng-container i18n="Text of the link to the books screen@@HomeComponent:book list link">
+                Buchliste ansehen
+            </ng-container>
+            <i class="right arrow icon"></i>
+        </a>
     </div>
 </div>

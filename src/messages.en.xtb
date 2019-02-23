@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE translationbundle [
+<!ELEMENT translationbundle (translation)*>
+<!ATTLIST translationbundle lang CDATA #REQUIRED>
+
+<!ELEMENT translation (#PCDATA|ph)*>
+<!ATTLIST translation id CDATA #REQUIRED>
+<!ATTLIST translation desc CDATA #IMPLIED>
+<!ATTLIST translation meaning CDATA #IMPLIED>
+<!ATTLIST translation xml:space (default|preserve) "default">
+
+<!ELEMENT ph (#PCDATA|ex)*>
+<!ATTLIST ph name CDATA #REQUIRED>
+
+<!ELEMENT ex (#PCDATA)>
+]>
+<translationbundle lang="en">
+  <translation id="HomeComponent:header">The Book Monkey App</translation>
+  <translation id="HomeComponent:tagline" desc="a proud sentence about the project">Your platform for current and interesting knowledge books!</translation>
+  <translation id="HomeComponent:book list link" desc="Text of the link to the books screen">View book list</translation>
+  <translation id="BookFormComponent:book form">Book Form</translation>
+  <translation id="BookFormComponent:book title">Book Title</translation>
+  <translation id="BookFormComponent:book subtitle">Book Subtitle</translation>
+  <translation id="BookFormComponent:book isbn">ISBN-Number</translation>
+  <translation id="BookFormComponent:book published date">Publication Date</translation>
+  <translation id="BookFormComponent:book authors">Book Authors</translation>
+  <translation id="BookFormComponent:book description">Book Description</translation>
+  <translation id="BookFormComponent:book thumbnails">Book Thumbnail</translation>
+  <translation id="BookFormComponent:save">Save</translation>
+  <translation id="BookListComponent:list of books">List of Books</translation>
+</translationbundle>

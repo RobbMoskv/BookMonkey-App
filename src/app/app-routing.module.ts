@@ -12,7 +12,8 @@ const routes: Routes = [
     // Lazy loading routes
     {
         path: 'books',
-        loadChildren: './book/book.module#BookModule'
+        loadChildren: './book/book.module#BookModule',
+        runGuardsAndResolvers: 'paramsChange',
     },
     {
         path: 'admin',
@@ -24,7 +25,8 @@ const routes: Routes = [
 @NgModule({
     // Call forRoot() method on the RouterModule and pass the array with the route definition
     // Also pass the preloading strategy
-    imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+    // imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+    imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
     exports: [RouterModule],
     providers: [CanNavigateToAdminGuard]
 })

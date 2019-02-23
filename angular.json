@@ -49,6 +49,12 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "en": {
+              "aot": true,
+              "i18nFile": "src/messages.en.xtb",
+              "i18nFormat": "xtb",
+              "i18nLocale": "en"
             }
           }
         },
@@ -60,6 +66,9 @@
           "configurations": {
             "production": {
               "browserTarget": "BookMonkey:build:production"
+            },
+            "en": {
+              "browserTarget": "BookMonkey:build:en"
             }
           }
         },

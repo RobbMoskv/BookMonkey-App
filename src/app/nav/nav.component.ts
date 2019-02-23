@@ -9,12 +9,14 @@ import { Book } from '../shared/book';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
   }
 
   bookSelected(book: Book) {
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.navigate(['../books', book.isbn], { relativeTo: this.route });
   }
 
