@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookListComponent } from './book-list.component';
+import { Book } from '../../shared/book';
 
 describe('BookListComponent', () => {
   let component: BookListComponent;

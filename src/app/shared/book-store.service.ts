@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Book } from './book';
 import { Observable } from 'rxjs';
@@ -8,10 +8,10 @@ import { BookFactory } from './book-factory';
 @Injectable()
 export class BookStoreService {
 
-  private api = 'https://book-monkey2-api.angular-buch.com';
+  // private api = 'https://book-monkey2-api.angular-buch.com';
   private headers: Headers = new Headers();
 
-  constructor(private http: Http) {
+  constructor(@Inject('API_URL') private api: string, private http: Http) {
     this.headers.append('Content-type', 'application/json');
   }
   // Method: Get all books
